@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>{{PROPOSAL_TITLE}} · Vane Castiblanco</title>
+  <meta name="description" content="{{PROPOSAL_DESCRIPTION}}">
+  <style>
+    :root {
+      --teal: #0f766e;
+      --ink: #0d231c;
+      --mint: #cdefe3;
+      --paper: #f5f7f3;
+      --paper-2: #edf2ee;
+      --gray: #62706a;
+      --line: rgba(13,35,28,.16);
+      --accent: {{CLIENT_ACCENT}};
+      --display: Georgia, "Times New Roman", serif;
+      --body: Arial, Helvetica, sans-serif;
+      --hand: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 17px/1.65 var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 2.5rem)); margin: auto; }
+    .section { padding: clamp(4.8rem, 9vw, 8rem) 0; border-bottom: 1px solid var(--line); }
+    h1, h2, h3 { font-family: var(--display); line-height: 1.04; letter-spacing: -.025em; margin: 0; }
+    h1 { max-width: 16ch; font-size: clamp(3rem, 8.4vw, 7rem); }
+    h2 { max-width: 19ch; font-size: clamp(2.25rem, 5vw, 4.6rem); }
+    h3 { font-size: clamp(1.35rem, 2.5vw, 1.75rem); }
+    p { margin: 0; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: 1.4rem;
+      color: var(--teal);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .eyebrow::after { content: ""; width: 46px; height: 1px; background: currentColor; opacity: .45; }
+    .lead { max-width: 62ch; margin-top: 1.6rem; color: var(--gray); font-size: 1.08rem; }
+    .hero {
+      min-height: 92svh;
+      display: flex;
+      align-items: flex-end;
+      padding: 7rem 0 4rem;
+      background:
+        radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 28rem),
+        var(--ink);
+      color: var(--paper);
+    }
+    .hero .meta { color: var(--mint); margin-bottom: 2rem; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; }
+    .hero em { color: var(--mint); font-weight: 400; }
+    .signature-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-top: 4rem; }
+    .signature {
+      color: var(--mint);
+      font: clamp(2.8rem, 7vw, 4.5rem)/1 var(--hand);
+      clip-path: inset(0 100% 0 0);
+      animation: write 1.8s .35s cubic-bezier(.55,.05,.2,1) forwards;
+    }
+    .role, .date { color: rgba(245,247,243,.56); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; }
+    .date { text-align: right; }
+    .date b { display: block; color: var(--mint); font-weight: 600; }
+    @keyframes write { to { clip-path: inset(0 -4% 0 0); } }
+    .smile {
+      position: fixed;
+      z-index: 20;
+      top: 1.2rem;
+      right: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      color: var(--mint);
+      pointer-events: none;
+      filter: drop-shadow(0 2px 10px rgba(0,0,0,.08));
+    }
+    .smile-word { position: relative; font: 2rem/1 var(--hand); }
+    .face { width: 31px; animation: float 3.5s ease-in-out infinite; }
+    .face circle, .face path { fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 2; }
+    .face .eye { fill: currentColor; stroke: none; }
+    .spark { position: absolute; left: -.75rem; top: -.6rem; width: 16px; animation: shine 2.8s infinite; }
+    .spark path { fill: currentColor; }
+    @keyframes float { 50% { transform: translateY(-5px) rotate(3deg); } }
+    @keyframes shine { 0%,100% { opacity: .25; transform: scale(.7); } 50% { opacity: 1; transform: scale(1.15) rotate(25deg); } }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 2.5rem; background: var(--line); border: 1px solid var(--line); }
+    .card { min-height: 240px; padding: 2rem; background: var(--paper); }
+    .card .number { margin-bottom: 1.1rem; color: var(--teal); font-size: .68rem; font-weight: 700; letter-spacing: .13em; }
+    .card p { margin-top: .8rem; color: var(--gray); font-size: .95rem; }
+    .dark { background: var(--ink); color: var(--paper); }
+    .dark .eyebrow { color: var(--mint); }
+    .dark .lead { color: rgba(245,247,243,.65); }
+    .deliverables { display: grid; gap: 1px; margin-top: 2.5rem; background: rgba(245,247,243,.16); border: 1px solid rgba(245,247,243,.16); }
+    .deliverable { display: grid; grid-template-columns: 44px 1fr; gap: 1.2rem; padding: 1.6rem; background: #123129; }
+    .deliverable b { color: var(--mint); font-size: .72rem; letter-spacing: .12em; }
+    .deliverable p { color: rgba(245,247,243,.68); margin-top: .4rem; }
+    .cta { background: var(--mint); }
+    .steps { display: grid; gap: 1px; margin-top: 2.5rem; background: var(--line); border: 1px solid var(--line); }
+    .step { display: grid; grid-template-columns: 36px 1fr; gap: 1rem; padding: 1.35rem; background: var(--mint); }
+    .step b { color: var(--teal); }
+    .button {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: .9rem 1.35rem;
+      border-radius: 3px;
+      background: var(--ink);
+      color: var(--mint);
+      text-decoration: none;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      transition: transform .2s, background .2s;
+    }
+    .button:hover, .button:focus-visible { transform: translateY(-2px); background: var(--teal); }
+    .reveal { opacity: 0; transform: translateY(15px); transition: opacity .65s, transform .65s; }
+    .reveal.visible { opacity: 1; transform: none; }
+    footer { padding: 3rem 0; background: var(--ink); color: var(--paper); }
+    footer .wrap { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; }
+    footer .name { color: var(--mint); font: 2.8rem/1 var(--hand); }
+    footer small { color: rgba(245,247,243,.52); letter-spacing: .08em; }
+    @media (max-width: 760px) {
+      .cards { grid-template-columns: 1fr; }
+      .signature-row, footer .wrap { align-items: flex-start; flex-direction: column; }
+      .date { text-align: left; }
+      .smile { transform: scale(.85); transform-origin: right top; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+      .signature { clip-path: none; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    @media print {
+      .smile { display: none; }
+      .section { break-inside: avoid; padding: 2.5rem 0; }
+      .hero { min-height: auto; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="smile" aria-hidden="true">
+    <span class="smile-word">smile
+      <svg class="spark" viewBox="0 0 24 24"><path d="M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12C8 11 11 8 12 0Z"/></svg>
+    </span>
+    <svg class="face" viewBox="0 0 44 44">
+      <circle cx="22" cy="22" r="19"/><circle class="eye" cx="15" cy="18" r="2.2"/>
+      <circle class="eye" cx="29" cy="18" r="2.2"/><path d="M13 26c4 6 14 6 18 0"/>
+    </svg>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="meta">Para {{CLIENT_NAME}} · {{CLIENT_LOCATION}}</div>
+      <h1>{{PROPOSAL_HEADLINE}} <em>{{PROPOSAL_EMPHASIS}}</em>.</h1>
+      <p class="lead">{{PROPOSAL_INTRO}}</p>
+      <div class="signature-row">
+        <div>
+          <div class="signature">Vane Castiblanco</div>
+          <div class="role">Estrategia de contenido e inteligencia artificial</div>
+        </div>
+        <div class="date">Documento de trabajo<b>{{PROPOSAL_DATE}}</b></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <div class="eyebrow reveal">Contexto</div>
+        <h2 class="reveal">{{CONTEXT_HEADLINE}}</h2>
+        <p class="lead reveal">{{CONTEXT_COPY}}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="eyebrow reveal">Lo que encontramos</div>
+        <h2 class="reveal">{{FINDINGS_HEADLINE}}</h2>
+        <div class="cards reveal">
+          <article class="card"><div class="number">01</div><h3>{{FINDING_1_TITLE}}</h3><p>{{FINDING_1_COPY}}</p></article>
+          <article class="card"><div class="number">02</div><h3>{{FINDING_2_TITLE}}</h3><p>{{FINDING_2_COPY}}</p></article>
+          <article class="card"><div class="number">03</div><h3>{{FINDING_3_TITLE}}</h3><p>{{FINDING_3_COPY}}</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="wrap">
+        <div class="eyebrow reveal">La propuesta</div>
+        <h2 class="reveal">{{SOLUTION_HEADLINE}}</h2>
+        <p class="lead reveal">{{SOLUTION_COPY}}</p>
+        <div class="deliverables reveal">
+          {{DELIVERABLES_HTML}}
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="wrap">
+        <div class="eyebrow reveal">Siguiente paso</div>
+        <h2 class="reveal">{{NEXT_STEP_HEADLINE}}</h2>
+        <p class="lead reveal">{{NEXT_STEP_COPY}}</p>
+        <div class="steps reveal">{{NEXT_STEPS_HTML}}</div>
+        <a class="button reveal" href="/cuestionario">Abrir cuestionario</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div><div class="name">Vane Castiblanco</div><small>Estrategia · contenido · inteligencia artificial</small></div>
+      <small>Propuesta preparada para {{CLIENT_NAME}}</small>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => entry.isIntersecting && entry.target.classList.add("visible"));
+    }, { threshold: .12 });
+    document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
+  </script>
+</body>
+</html>
