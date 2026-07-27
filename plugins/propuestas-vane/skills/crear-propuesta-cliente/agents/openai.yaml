@@ -1,0 +1,8 @@
+interface:
+  display_name: "Propuesta rápida para cliente"
+  short_description: "Audita, publica y recomienda cuánto cobrar"
+  brand_color: "#0F766E"
+  default_prompt: "Usa $crear-propuesta-cliente para analizar este cliente, crear una primera versión pública y recomendar cuánto cobrar en su moneda sin preguntas innecesarias."
+
+policy:
+  allow_implicit_invocation: true
