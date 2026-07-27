@@ -1,0 +1,27 @@
+{
+  "name": "propuestas-vane",
+  "version": "0.1.0+codex.20260727200855",
+  "description": "Audita clientes, crea propuestas p\u00fablicas y recomienda cu\u00e1nto cobrar en la moneda local con la identidad de Vane Castiblanco.",
+  "author": {
+    "name": "Vane Castiblanco"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Propuestas Vane",
+    "shortDescription": "Audita, crea y publica propuestas r\u00e1pidamente.",
+    "longDescription": "Flujo r\u00e1pido para investigar clientes, publicar un prototipo o estrategia sin login y recomendar autom\u00e1ticamente cu\u00e1nto cobrar en la moneda del cliente.",
+    "developerName": "Vane Castiblanco",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write",
+      "Research"
+    ],
+    "brandColor": "#0F766E",
+    "defaultPrompt": [
+      "Analiza r\u00e1pidamente este cliente desde sus redes.",
+      "Crea una auditor\u00eda de redes y publ\u00edcala en HTML.",
+      "Construye un prototipo web \u00fanico y publ\u00edcalo para revisarlo."
+    ]
+  }
+}
